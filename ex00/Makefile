@@ -1,4 +1,4 @@
-NAME = ScalarConverter
+NAME = convert
 CC = g++
 CFLAGS = -g3 -Wall -Wextra -Werror -std=c++98
 
@@ -7,7 +7,7 @@ SRC =	src/main.cpp \
 		src/ScalarConverterUtils.cpp \
 
 OBJS = $(notdir $(SRC:.cpp=.o))
-OBJDIR = ScalarConverter_objects
+OBJDIR = Convert_objects
 
 all: $(OBJDIR) $(NAME)
 
