@@ -6,7 +6,7 @@
 /*   By: daniel-escamilla <daniel-escamilla@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 09:44:56 by daniel-esca       #+#    #+#             */
-/*   Updated: 2025/06/12 10:26:41 by daniel-esca      ###   ########.fr       */
+/*   Updated: 2025/06/12 11:22:27 by daniel-esca      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,26 @@ bool ScalarConverter::hasDecimalPart(double value)
 	return std::modf(value, &intPart) != 0.0;
 }
 
-void ScalarConverter::printWithFormat(double value, bool isFloat)
+int ScalarConverter::getDecimalPrecision(const std::string& str)
 {
-	std::cout << value;
-	if (!hasDecimalPart(value))
-		std::cout << ".0";
-	if (isFloat)
-		std::cout << "f";
-	std::cout << std::endl;
+    size_t dotPos = str.find('.');
+    if (dotPos == std::string::npos)
+        return 1;
+
+    size_t end = str.find('f');
+    if (end == std::string::npos)
+        end = str.length();
+
+    return static_cast<int>(end - dotPos - 1);
+}
+
+void ScalarConverter::printWithFormat(double value, bool isFloat, const std::string& originalStr)
+{
+    std::cout << std::fixed;
+    int precision = getDecimalPrecision(originalStr);
+    std::cout << std::setprecision(precision);
+    std::cout << value;
+    if (isFloat)
+        std::cout << "f";
+    std::cout << std::endl;
 }
