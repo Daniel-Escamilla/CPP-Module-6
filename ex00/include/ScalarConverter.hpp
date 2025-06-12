@@ -6,7 +6,7 @@
 /*   By: daniel-escamilla <daniel-escamilla@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:42:19 by daniel-esca       #+#    #+#             */
-/*   Updated: 2025/06/12 11:23:01 by daniel-esca      ###   ########.fr       */
+/*   Updated: 2025/06/12 11:50:00 by daniel-esca      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class ScalarConverter
 	private:
 		ScalarConverter();
 		~ScalarConverter();
+		ScalarConverter(const ScalarConverter& copy);
+		ScalarConverter &operator=(const ScalarConverter& copy);
 
 		static bool parseLiteral(const std::string& str, double& out);
 		static bool hasDecimalPart(double value);
