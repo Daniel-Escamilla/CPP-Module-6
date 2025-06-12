@@ -6,7 +6,7 @@
 /*   By: daniel-escamilla <daniel-escamilla@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:42:33 by daniel-esca       #+#    #+#             */
-/*   Updated: 2025/06/12 10:45:47 by daniel-esca      ###   ########.fr       */
+/*   Updated: 2025/06/12 11:18:48 by daniel-esca      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,42 +35,16 @@ void ScalarConverter::printInt(double value)
 		std::cout << static_cast<int>(value) << std::endl;
 }
 
-void ScalarConverter::printFloat(double value)
+void ScalarConverter::printFloat(double value, const std::string& str)
 {
 	std::cout << "float: ";
-	if (std::isnan(value))
-	{
-		std::cout << "nanf" << std::endl;
-		return;
-	}
-	if (std::isinf(value)) 
-	{
-		if (value < 0)
-			std::cout << "-inff" << std::endl;
-		else
-			std::cout << "+inff" << std::endl;
-		return;
-	}
-	printWithFormat(static_cast<float>(value), true);
+	printWithFormat(static_cast<float>(value), true, str);
 }
 
-void ScalarConverter::printDouble(double value)
+void ScalarConverter::printDouble(double value, const std::string& str)
 {
 	std::cout << "double: ";
-	if (std::isnan(value))
-	{
-		std::cout << "nan" << std::endl;
-		return;
-	}
-	if (std::isinf(value))
-	{
-		if (value < 0)
-			std::cout << "-inf" << std::endl;
-		else
-			std::cout << "+inf" << std::endl;
-		return;
-	}
-	printWithFormat(value, false);
+	printWithFormat(value, false, str);
 }
 
 void ScalarConverter::limits(const std::string& str)
@@ -110,6 +84,6 @@ void ScalarConverter::convert(const std::string& literal)
 	}
 	printChar(static_cast<int>(value));
 	printInt(value);
-	printFloat(value);
-	printDouble(value);
+	printFloat(value, literal);
+	printDouble(value, literal);
 }
