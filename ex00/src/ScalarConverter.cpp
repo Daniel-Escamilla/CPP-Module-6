@@ -6,7 +6,7 @@
 /*   By: daniel-escamilla <daniel-escamilla@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:42:33 by daniel-esca       #+#    #+#             */
-/*   Updated: 2025/06/12 11:18:48 by daniel-esca      ###   ########.fr       */
+/*   Updated: 2025/06/23 11:41:38 by daniel-esca      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter& copy)
+{
+	(void) copy;
+	return *this;
+}
+
 
 void ScalarConverter::printChar(int value)
 {
